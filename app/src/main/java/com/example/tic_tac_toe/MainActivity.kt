@@ -37,40 +37,15 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
             TURN_COUNT = 0
             initializeBoardStatus()
             PLAYER = true
-        }
-
-        TURN_COUNT++
-        PLAYER = !PLAYER
-
-        if(PLAYER)
-        {
             updateDisplay("Player X Turn")
         }
-        else
-        {
-            updateDisplay("Player Y Turn")
-        }
-        if(TURN_COUNT == 9)
-        {
-            updateDisplay("GAME DRAW")
-        }
+
+
+
+
     }
 
-    private fun updateDisplay(s: String) {
-        DisplayTv.text = s
-    }
 
-    private fun initializeBoardStatus() {
-        for(i in 0..2)
-        {
-            for(j in 0..2)
-            {
-                boardStatus[0][0] = -1
-                board[0][0].isEnabled = true
-                board[0][0].text = ""
-            }
-        }
-    }
 
     override fun onClick(v: View) {
         when(v.id){
@@ -100,6 +75,36 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
             }
             R.id.button9->{
                 updateValue(2,2,PLAYER)
+            }
+        }
+        TURN_COUNT++
+        PLAYER = !PLAYER
+        if(PLAYER)
+        {
+            updateDisplay("Player X Turn")
+        }
+        else
+        {
+            updateDisplay("Player O Turn")
+        }
+        if(TURN_COUNT == 9)
+        {
+            updateDisplay("GAME DRAW")
+        }
+    }
+
+    private fun updateDisplay(s: String) {
+        DisplayTv.text = s
+    }
+
+    private fun initializeBoardStatus() {
+        for(i in 0..2)
+        {
+            for(j in 0..2)
+            {
+                boardStatus[i][j] = -1
+                board[i][j].isEnabled = true
+                board[i][j].text = ""
             }
         }
     }
