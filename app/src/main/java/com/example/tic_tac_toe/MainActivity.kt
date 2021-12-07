@@ -1,6 +1,7 @@
 package com.example.tic_tac_toe
 
 import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -8,6 +9,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() , View.OnClickListener {
 
+    var X:String=""
+    var O:String=""
     var PLAYER = true
     var TURN_COUNT = 0
     var boardStatus = Array(3){IntArray(3)}
@@ -17,7 +20,8 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+         X = intent.getStringExtra("X").toString()
+         O = intent.getStringExtra("O").toString()
         board = arrayOf(
             arrayOf(button1,button2,button3),
             arrayOf(button4,button5,button6),
@@ -38,6 +42,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
             initializeBoardStatus()
             PLAYER = true
             updateDisplay("Player X Turn")
+            //updateDisplay("Player $X Turn")
         }
 
 
@@ -81,11 +86,13 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
         PLAYER = !PLAYER
         if(PLAYER)
         {
-            updateDisplay("Player X Turn")
+            //updateDisplay("Player X Turn")
+            updateDisplay("Player $X Turn")
         }
         else
         {
-            updateDisplay("Player O Turn")
+            //updateDisplay("Player O Turn")
+            updateDisplay("Player $O Turn")
         }
         if(TURN_COUNT == 9)
         {
@@ -104,12 +111,14 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
                 if(boardStatus[i][0] == 1)
                 {
                     updateDisplay("Player X Winner")
+                    //updateDisplay("Player $X Winner")
                     disableButton()
                     break
                 }
                 else if(boardStatus[i][0] == 0)
                 {
                     updateDisplay("Player O Winner")
+                    //updateDisplay("Player $O Winner")
                     disableButton()
                     break
                 }
@@ -123,12 +132,14 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
                 if(boardStatus[0][i] == 1)
                 {
                     updateDisplay("Player X Winner")
+                    ////updateDisplay("Player $X Winner")
                     disableButton()
                     break
                 }
                 else if(boardStatus[0][i] == 0)
                 {
                     updateDisplay("Player O Winner")
+                    //updateDisplay("Player $O Winner")
                     disableButton()
                     break
                 }
@@ -140,11 +151,13 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
             if(boardStatus[0][0] == 1)
             {
                 updateDisplay("Player X Winner")
+                //updateDisplay("Player $X Winner")
                 disableButton()
             }
             else if(boardStatus[0][0] == 0)
             {
                 updateDisplay("Player O Winner")
+                //updateDisplay("Player $O Winner")
                 disableButton()
             }
         }
@@ -154,11 +167,13 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
                 if(boardStatus[1][1] == 1)
                 {
                     updateDisplay("Player X Winner")
+                    //updateDisplay("Player $X Winner")
                     disableButton()
                 }
                 else if(boardStatus[1][1] == 0)
                 {
                     updateDisplay("Player O Winner")
+                    //updateDisplay("Player $O Winner")
                     disableButton()
                 }
             }
