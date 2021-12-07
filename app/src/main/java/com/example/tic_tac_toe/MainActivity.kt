@@ -90,6 +90,89 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
         if(TURN_COUNT == 9)
         {
             updateDisplay("GAME DRAW")
+            disableButton()
+        }
+        checkWinner()
+    }
+
+    private fun checkWinner() {
+        //Horizontal Rows
+        for(i in 0..2)
+        {
+            if(boardStatus[i][0] == boardStatus[i][1] && boardStatus[i][0] == boardStatus[i][2])
+            {
+                if(boardStatus[i][0] == 1)
+                {
+                    updateDisplay("Player X Winner")
+                    disableButton()
+                    break
+                }
+                else if(boardStatus[i][0] == 0)
+                {
+                    updateDisplay("Player O Winner")
+                    disableButton()
+                    break
+                }
+            }
+        }
+        // Vertical Columns
+        for(i in 0..2)
+        {
+            if(boardStatus[0][i] == boardStatus[1][i] && boardStatus[0][i] == boardStatus[2][i])
+            {
+                if(boardStatus[0][i] == 1)
+                {
+                    updateDisplay("Player X Winner")
+                    disableButton()
+                    break
+                }
+                else if(boardStatus[0][i] == 0)
+                {
+                    updateDisplay("Player O Winner")
+                    disableButton()
+                    break
+                }
+            }
+        }
+        // Diagonals
+        if(boardStatus[0][0] == boardStatus[1][1] && boardStatus[0][0] == boardStatus[2][2])
+        {
+            if(boardStatus[0][0] == 1)
+            {
+                updateDisplay("Player X Winner")
+                disableButton()
+            }
+            else if(boardStatus[0][0] == 0)
+            {
+                updateDisplay("Player O Winner")
+                disableButton()
+            }
+        }
+        else{
+            if(boardStatus[0][2] == boardStatus[1][1] && boardStatus[0][2] == boardStatus[2][0])
+            {
+                if(boardStatus[1][1] == 1)
+                {
+                    updateDisplay("Player X Winner")
+                    disableButton()
+                }
+                else if(boardStatus[1][1] == 0)
+                {
+                    updateDisplay("Player O Winner")
+                    disableButton()
+                }
+            }
+        }
+
+
+    }
+
+    private fun disableButton() {
+        for(i in board)
+        {
+            for(button in i){
+                button.isEnabled = false
+            }
         }
     }
 
