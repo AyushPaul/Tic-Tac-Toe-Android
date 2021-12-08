@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="77dp"
         android:ems="10"
-        android:hint="Enter Player 1 Name"
+        android:hint="Enter Player 2 Name"
         android:textColor="@color/black"
         android:textAlignment="center"
         android:textSize="20sp"

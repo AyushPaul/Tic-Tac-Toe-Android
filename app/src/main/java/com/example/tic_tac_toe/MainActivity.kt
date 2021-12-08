@@ -45,7 +45,10 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
             updateDisplay("Player $X Turn")
         }
 
-
+        restartBtn.setOnClickListener({
+            val i = Intent(this,MainActivity2::class.java)
+            startActivity(i)
+        })
 
 
     }
